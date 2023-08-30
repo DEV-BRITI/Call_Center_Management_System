@@ -1,0 +1,427 @@
+body {
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    padding-top: 70px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+  
+.fixed-nav {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #fff;
+color: #333;
+font-weight: bold;
+padding: 10px 20px;
+position: fixed;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+top: 0;
+left: 0;
+width: 100%;
+z-index: 9999; /* Ensure the navigation bar stays on top */
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow at the bottom */
+transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
+}
+
+.logo {
+display: flex;
+align-items: center;
+}
+
+.logo img {
+width: 180px;
+margin-right: 10px;
+}
+
+.burger {
+  display: none;
+  cursor: pointer;
+  }
+  
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 5px;
+  }
+
+.nav-links {
+display: flex;
+justify-content: space-around;
+width: 50%;
+}
+
+.nav-links li {
+list-style: none;
+}
+
+.nav-links a {
+text-decoration: none;
+color: #333;
+padding: 8px 12px;
+font-size: 20px;
+font-weight: bold;
+transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: orange;
+}
+
+.nav-links a.active {
+  color: orange; /* Change link color when active (example) */
+}
+  
+/* Your existing CSS code for styling the navigation bar */
+@media screen and (max-width: 768px) {
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      top: 70px; /* Adjust this value as needed to position the links properly */
+      right: 0;
+      background-color: #fff;
+      width: 100%;
+    }
+  
+    .nav-links li {
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    .burger {
+      display: block;
+      cursor: pointer;
+    }
+  
+    .burger div {
+      width: 25px;
+      height: 3px;
+      background-color: #333;
+      margin: 5px;
+    }
+  
+    /* Show the navigation links when the .nav-active class is applied */
+    .nav-active {
+      display: flex;
+    }
+  }
+
+/* Styles for the Hero section */
+#hero {
+  text-align: center;
+  padding: 150px 0;
+  background-image: url(../call1.png);
+  background-size: cover;
+  background-position: center;
+}
+
+#hero h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+#hero p {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.cta-btn {
+  display: inline-block;
+  background-color: #ff8800;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: transform 0.3s ease; /* Add transition for smooth scaling */
+}
+
+.cta-btn:hover {
+  background-color: #FF6347; /* Change the button color on hover (example) */
+  transform: scale(1.1); /* Scale the button by 10% on hover */
+}
+
+/* Styles for the Services section */
+#services {
+  text-align: center;
+  padding: 80px;
+  background-color: #fff;
+  min-height: 100vh;
+}
+
+#services h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+.services-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.service {
+  /* max-width: calc((100vw - 96px)/3); */
+  /* width: 30%; */
+  color: aliceblue;
+  margin-bottom: 30px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: brown;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease; /* Add smooth transition for the hover effect */
+}
+
+.service img {
+  width: 100%;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+.service h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.service p {
+  font-size: 16px;
+}
+
+/* Show three services in a row on large screens */
+@media screen and (min-width: 1200px) {
+  .service {
+    width: calc(33.33% - 40px);
+  }
+}
+
+/* Show two services in a row on medium-sized screens */
+@media screen and (max-width: 1199px) and (min-width: 768px) {
+  .service {
+    width: calc(50% - 30px);
+  }
+}
+
+/* Show one service in a row on small-sized screens */
+@media screen and (max-width: 767px) {
+  .service {
+    width: 100%;
+  }
+}
+
+/* Hover effect for the service cards */
+.service:hover {
+  transform: scale(1.05); /* Slightly scale up the card on hover */
+}
+
+/* Styles for the Introduction */
+#about {
+  text-align: center;
+  padding: 100px 20px;
+  background-color: #f0f0f0;
+}
+
+#about h2 {
+  font-size: 48px;
+  margin-bottom: 30px;
+}
+
+#about h3 {
+  font-size: 24px;
+}
+
+#about p.intro {
+  font-size: 22px;
+  font-weight: bold;
+  color: #FF6347;
+}
+
+#about .about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  font-size: large;
+}
+
+/* Styles for Engaging Graphics */
+#about img {
+  max-width: 100%;
+}
+
+/* Styles for Key Features/Benefits */
+#about ul.features {
+  list-style: none;
+  padding: 0;
+  margin-top: 5px;
+}
+
+#about ul.features li {
+  font-size: 20px;
+}
+
+#about ul.features li span {
+  color: #FF6347;
+}
+
+/* Styles for the Team section */
+#team {
+  text-align: center;
+  padding: 100px 20px;
+  background-color: #fff;
+}
+
+#team h2 {
+  font-size: 48px;
+  margin-bottom: 30px;
+}
+
+/* Styles for Testimonials in Team section */
+.testimonials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.testimonial-card {
+  max-width: 300px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.testimonial-card img {
+  width: 200px; /* Set a fixed width for the images */
+  height: 200px; /* Set a fixed height for the images */
+  object-fit: cover; /* Ensure the images maintain their aspect ratio and cover the container */
+  object-position: center top; /* Center the image horizontally and align to the top of the container */
+}
+
+.testimonial-card p {
+  margin-top: 10px;
+}
+
+.testimonial-card p.bold {
+  font-weight: bold;
+}
+
+/* Hover effect for the testimonial cards */
+.testimonial-card:hover {
+  transform: scale(1.05); /* Slightly scale up the card on hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Add a subtle box-shadow on hover */
+}
+
+@media screen and (max-width: 768px) {
+  .testimonial-card {
+    max-width: 80%; /* Cards take full width on small screens */
+  }
+}
+
+/* Styles for the Contact section */
+#contact {
+  text-align: center;
+  padding: 100px 20px;
+  background-color: #f0f0f0;
+}
+
+#contact h2 {
+  font-size: 48px;
+  margin-bottom: 30px;
+}
+
+#contact p {
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto 30px;
+}
+
+.contact-info {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-info li {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.contact-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.contact-form input[type=submit] {
+  width: calc(100% - (-20px)); /* Subtract the padding and border from the total width */
+  background-color: #FF6347;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Add transition for smooth hover effect */
+  box-sizing: border-box;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.contact-form input[type=submit]:hover {
+  background-color: #FF4500; /* Change the button color on hover (example) */
+  transform: scale(1.05); /* Add a slight scale effect on hover */
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .contact-form {
+    width: 90%;
+  }
+}
+
+/* Styles for the Footer section */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+}
+
+footer p {
+  margin: 0;
+  font-size: 16px;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}

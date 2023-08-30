@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome, Admin!</h1>
+    </header>
+
+    <div class="container">
+        <aside>
+            <h2>Navigation</h2>
+            <ul>
+                <li><a href="#callMetrics">Call Metrics</a></li>
+                <li><a href="#agentPerformance">Agent Performance</a></li>
+                <li><a href="#manageAgents">Manage Agents</a></li>
+                <li><a href="#reports">Reports</a></li>
+                <li><a href="#settings">Settings</a></li>
+            </ul>
+        </aside>
+
+        <main>
+            <section id="callMetrics">
+                <h2>Call Metrics</h2>
+                <div class="metric">
+                    <h3>Total Calls</h3>
+                    <span class="value" id="totalCalls">0</span>
+                </div>
+                <div class="metric">
+                    <h3>Missed Calls</h3>
+                    <span class="value" id="missedCalls">0</span>
+                </div>
+                <div class="metric">
+                    <h3>Call Duration</h3>
+                    <span class="value" id="callDuration">0 hrs</span>
+                </div>
+                <div class="metric">
+                    <h3>Average Call Duration</h3>
+                    <span class="value" id="averageCallDuration">0 min 0 sec</span>
+                </div>
+                <!-- Add a canvas element for the real-time graph -->
+                <canvas id="callMetricsChart" width="400" height="200"></canvas>
+            </section>
+
+            <section id="agentPerformance">
+                <h2>Agent Performance</h2>
+                <!-- Placeholder content for agent performance data -->
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Agent Name</th>
+                            <th>Total Calls</th>
+                            <th>Missed Calls</th>
+                            <th>Call Duration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Agent 1</td>
+                            <td>200</td>
+                            <td>5</td>
+                            <td>10 hrs</td>
+                        </tr>
+                        <tr>
+                            <td>Agent 2</td>
+                            <td>150</td>
+                            <td>10</td>
+                            <td>8 hrs</td>
+                        </tr>
+                        <!-- Add more rows for other agents -->
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="manageAgents">
+                <h2>Manage Agents</h2>
+                <!-- Placeholder content for managing agents -->
+                <ul>
+                    <li>Agent 1 - Active</li>
+                    <li>Agent 2 - Active</li>
+                    <li>Agent 3 - Inactive</li>
+                    <!-- Add more agents as needed -->
+                </ul>
+            </section>
+
+            <section id="reports">
+                <h2>Reports</h2>
+                <!-- Placeholder content for generating reports -->
+                <p>Select report type and criteria:</p>
+                <form>
+                    <label for="reportType">Report Type:</label>
+                    <select id="reportType">
+                        <option value="calls">Call Metrics</option>
+                        <option value="agents">Agent Performance</option>
+                        <option value="custom">Custom Report</option>
+                    </select>
+                    <br>
+                    <button type="submit">Generate Report</button>
+                </form>
+            </section>
+
+            <section id="settings">
+                <h2>Settings</h2>
+                <!-- Placeholder content for admin settings -->
+                <p>Customize dashboard settings:</p>
+                <form>
+                    <label for="theme">Dashboard Theme:</label>
+                    <select id="theme">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                    </select>
+                    <br>
+                    <button type="submit">Save Settings</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <!-- Add footer content -->
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Smooth scroll to section when clicking on a navigation link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const targetSection = document.querySelector(link.getAttribute('href'));
+                const offsetTop = targetSection.getBoundingClientRect().top + window.pageYOffset;
+                window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+            });
+        });
+
+        // Theme Switcher
+        const themeSelector = document.getElementById('theme');
+        themeSelector.addEventListener('change', () => {
+            const selectedTheme = themeSelector.value;
+            document.body.className = selectedTheme;
+            // Save the selected theme preference in LocalStorage
+            localStorage.setItem('dashboardTheme', selectedTheme);
+        });
+
+        // Load the user's theme preference from LocalStorage
+        const savedTheme = localStorage.getItem('dashboardTheme');
+        if (savedTheme) {
+            document.body.className = savedTheme;
+        }
+
+        // Function to update the call metrics data and graph
+        function updateCallMetrics() {
+            // Simulate fetching call metrics data from the backend
+            const callMetricsData = {
+                totalCalls: Math.floor(Math.random() * 1000),
+                missedCalls: Math.floor(Math.random() * 100),
+                callDuration: `${Math.floor(Math.random() * 50)} hrs`,
+                averageCallDuration: `${Math.floor(Math.random() * 5)} min ${Math.floor(Math.random() * 60)} sec`
+            };
+
+            // Update the call metrics values on the dashboard
+            document.getElementById('totalCalls').textContent = callMetricsData.totalCalls;
+            document.getElementById('missedCalls').textContent = callMetricsData.missedCalls;
+            document.getElementById('callDuration').textContent = callMetricsData.callDuration;
+            document.getElementById('averageCallDuration').textContent = callMetricsData.averageCallDuration;
+
+            // Update the call metrics graph data
+            callMetricsChart.data.datasets[0].data.push(callMetricsData.totalCalls);
+            callMetricsChart.data.datasets[1].data.push(callMetricsData.missedCalls);
+            callMetricsChart.data.labels.push(new Date().toLocaleTimeString());
+
+            // Keep the graph data within a certain limit (e.g., last 10 data points)
+            const maxDataPoints = 10;
+            while (callMetricsChart.data.datasets[0].data.length > maxDataPoints) {
+                callMetricsChart.data.datasets[0].data.shift();
+                callMetricsChart.data.datasets[1].data.shift();
+                callMetricsChart.data.labels.shift();
+            }
+
+            // Update the chart
+            callMetricsChart.update();
+        }
+
+        // Set the update interval for real-time data (e.g., 5 seconds)
+        const updateInterval = 5000; // 5000 milliseconds = 5 seconds
+        setInterval(updateCallMetrics, updateInterval);
+            </script>
+        </body>
+        </html>
