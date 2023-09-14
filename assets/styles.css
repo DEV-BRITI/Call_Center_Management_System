@@ -13,7 +13,7 @@ align-items: center;
 background-color: #fff;
 color: #333;
 font-weight: bold;
-padding: 10px 20px;
+padding: 5px 10px;
 position: fixed;
 font-family: Verdana, Geneva, Tahoma, sans-serif;
 top: 0;
@@ -121,12 +121,14 @@ transition: background-color 0.3s ease;
 #hero h1 {
   font-size: 40px;
   margin-bottom: 20px;
+  color: #fff;
 }
 
 #hero p {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 30px;
+  color: #fff;
 }
 
 .cta-btn {
@@ -236,8 +238,8 @@ transition: background-color 0.3s ease;
 }
 
 #about p.intro {
-  font-size: 22px;
-  font-weight: bold;
+  font-size: 18px;
+  font-weight: 650;
   color: #FF6347;
 }
 
